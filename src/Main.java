@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -63,6 +64,20 @@ public class Main {
         //Kim
 //      Song
 //      Lee
+
+        System.out.println("------스트림 api------");
+
+        List<String> customersNames = customers.stream()
+                                        .filter(customer -> customer.getAge() > 30) // 필터링
+                                        .sorted()                                   //정렬
+                                        .map(Customer::getName)                     //데이터 매핑
+                                        .collect(Collectors.toList());              //데이터를 리스트화 후 반환
+
+        for(String name : customersNames){
+            System.out.println(name);
+        }  // 위와 결과 동일
+
+
 
 
 
